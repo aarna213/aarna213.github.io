@@ -83,6 +83,36 @@
         }
         scrolling = false;
       }
+          function shuffleArray(array) {
+      for (let i = array.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [array[i], array[j]] = [array[j], array[i]];
+      }
+    }
+
+    // Animation function
+    function animateTitle() {
+      const word = "kornosto";
+      const letters = word.split("");
+      shuffleArray(letters);
+
+      let currentIndex = 0;
+      const animationInterval = setInterval(() => {
+        title.textContent += letters[currentIndex];
+        currentIndex++;
+
+        if (currentIndex === letters.length) {
+          clearInterval(animationInterval);
+        }
+      }, 100);
+    }
+
+    // Add event listeners
+    window.addEventListener('load', () => {
+      animateTitle();
+    });
+
+    menuToggle.addEventListener('click', () => {
     });
 
     menuToggle.addEventListener('click', () => {
