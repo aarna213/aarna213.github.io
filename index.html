@@ -1,14 +1,93 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Page Title</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Responsive Website</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+    }
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: top 0.5s;
+    }
+    .navbar.hidden {
+      top: -50px;
+    }
+    .navbar h1 {
+      margin-left: 20px;
+      animation: appear 4s forwards;
+      opacity: 0;
+    }
+    @keyframes appear {
+      0% { opacity: 0; transform: translateX(-50px); }
+      100% { opacity: 1; transform: translateX(0); }
+    }
+    .sidebar {
+      position: fixed;
+      top: 0;
+      left: -250px;
+      width: 250px;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: white;
+      padding: 20px;
+      transition: left 0.5s;
+    }
+    .sidebar.active {
+      left: 0;
+    }
+    .content {
+      margin-top: 70px;
+      padding: 20px;
+    }
+  </style>
 </head>
 <body>
+  <div class="navbar" id="navbar">
+    <h1 id="title">kornosto</h1>
+    <button id="menuToggle">Menu</button>
+  </div>
+  <div class="sidebar" id="sidebar">
+    <p>Sidebar content here.</p>
+  </div>
+  <div class="content">
+    <p>Main content goes here.</p>
+  </div>
+  <script>
+    const navbar = document.getElementById('navbar');
+    const title = document.getElementById('title');
+    const sidebar = document.getElementById('sidebar');
+    const menuToggle = document.getElementById('menuToggle');
 
-<h1>This is a Heading</h1>
-<p>This is a paragraph.</p>
+    let scrolling = false;
 
+    window.addEventListener('scroll', () => {
+      if (!scrolling) {
+        scrolling = true;
+        if (window.scrollY > 50) {
+          navbar.classList.add('hidden');
+        } else {
+          navbar.classList.remove('hidden');
+        }
+        scrolling = false;
+      }
+    });
+
+    menuToggle.addEventListener('click', () => {
+      sidebar.classList.toggle('active');
+    });
+  </script>
 </body>
 </html>
-
-
