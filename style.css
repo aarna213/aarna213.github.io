@@ -19,17 +19,18 @@ h1:hover {
   background-color: white;
   color: black;
 }
-.centered {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+.gfg {
+    margin: 3%;
+    position: relative;
 }
-.container {
-  position: relative;
-  text-align: center;
-  color: white;
-}
+       
+.text-container {
+    position: absolute;
+    color: rgb(255, 255, 255);
+    left: 18rem;
+    top: 2rem;
+    background-color: rgb(41, 41, 41, 0.8);
+    padding: 0 1rem;
 .rs{
   width: 100%;
   height: auto;
